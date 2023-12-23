@@ -30,7 +30,10 @@ params, covariance = curve_fit(custom_function, x_read, y_read)
 a_fit, b_fit, c_fit = params
 
 # Predict y values using the fitted parameters
-y_fit = custom_function(x_read, a_fit, b_fit, c_fit)
+y_fit = custom_function(x_read, *params)
+
+# Print the fitted parameters
+print(f'Fitted Parameters (a, b, c): {a_fit}, {b_fit}, {c_fit}')
 
 # Plot the results
 plt.scatter(x_read, y_read, label='Data')
@@ -45,6 +48,3 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Curve Fitting Example')
 plt.show()
-
-# Print the fitted parameters
-print(f'Fitted Parameters (a, b, c): {a_fit}, {b_fit}, {c_fit}')
